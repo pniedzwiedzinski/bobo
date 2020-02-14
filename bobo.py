@@ -13,7 +13,7 @@ def get_lucky():
 
 def main():
     lucky, date = get_lucky()
-    message = f"<b>Szczesliwy numerek: {lucky}</b>"
+    message = f"<b style="color: red">Szczesliwy numerek: {lucky}</b>"
 
     # Format wiadomości wymagany przez telegrama
     data = {
