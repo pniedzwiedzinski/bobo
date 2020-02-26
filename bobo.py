@@ -10,7 +10,7 @@ CHAT_ID = os.environ['CHAT_ID']
 def get_name(number):
     with codecs.open('./config.json', "r", "utf-8") as f:
         data = json.load(f)
-    if number in date:
+    if number in data:
         return date[number]
     return number
 
