@@ -2,6 +2,7 @@ import os
 import requests
 import codecs
 import json
+from datetime import datetime
 
 # Pobieranie wrażliwych danych z konfiguracji systemu
 TOKEN = os.environ['TOKEN']
@@ -14,20 +15,24 @@ def get_name(number):
         return data[number]
     return number
 
+def get_lessons():
+    r = requests.get("https://kapskypl.github.io/planyn-backend/classes/3E.json")
+    table = r.json()
+    today = table[datetime.today().weekday()]
+    lessons = [ lesson for lesson in today if lesson ]
+    return lessons
+
 # Ta funkcja pobiera szczęśliwy numerek z https://get-lucky.netlify.com/
 def get_lucky():
     r = requests.get("https://get-lucky.netlify.com/.netlify/functions/get")
     r = r.json()
     return r["data"]["luckyNumber"], r["data"]["date"]
 
-def main():
-    lucky, date = get_lucky()
-    message = f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>"
-
+def send_msg(msg: str) -> str:
     # Format wiadomości wymagany przez telegrama
     data = {
         "chat_id": f"-{CHAT_ID}",
-        "text": message,
+        "text": msg,
         "parse_mode": "HTML",
     }
 
@@ -35,5 +40,12 @@ def main():
     r = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage", data=data)
     # Print który wypisuje odpowiedź od serwera telegrama
     print(r.text)
+
+
+def main():
+    lucky, date = get_lucky()
+    send_msg(f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>")
+
+    send_msg(f"<i>Dzisiaj będzie {len(get_lessons())} lekcji</i>")
 
 main()
