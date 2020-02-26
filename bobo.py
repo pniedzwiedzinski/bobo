@@ -1,5 +1,7 @@
 import os
 import requests
+import codecs
+import json
 
 # Pobieranie wrażliwych danych z konfiguracji systemu
 TOKEN = os.environ['TOKEN']
