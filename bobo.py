@@ -11,7 +11,7 @@ def get_name(number):
     with codecs.open('./config.json', "r", "utf-8") as f:
         data = json.load(f)
     if number in data:
-        return date[number]
+        return data[number]
     return number
 
 # Ta funkcja pobiera szczęśliwy numerek z https://get-lucky.netlify.com/
@@ -22,7 +22,7 @@ def get_lucky():
 
 def main():
     lucky, date = get_lucky()
-    message = f"<b>Szczesliwy numerek: {get_name(lucky)} ({lucky})</b>"
+    message = f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>"
 
     # Format wiadomości wymagany przez telegrama
     data = {
@@ -37,4 +37,3 @@ def main():
     print(r.text)
 
 main()
-
