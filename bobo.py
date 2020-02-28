@@ -4,6 +4,8 @@ import codecs
 import json
 from datetime import datetime
 
+from holidays import get_today_holiday
+
 # Pobieranie wrażliwych danych z konfiguracji systemu
 TOKEN = os.environ['TOKEN']
 CHAT_ID = os.environ['CHAT_ID']
@@ -47,5 +49,11 @@ def main():
     send_msg(f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>")
 
     send_msg(f"<i>Dzisiaj będzie {len(get_lessons())} lekcji</i>")
+
+    try:
+        holiday = get_today_holiday()
+        send_msg(f"Dzisiaj jest: {holiday.upper()}")
+    except:
+        return
 
 main()
