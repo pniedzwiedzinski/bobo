@@ -51,8 +51,8 @@ def main():
     send_msg(f"<i>Dzisiaj będzie {len(get_lessons())} lekcji</i>")
 
     try:
-        holiday = get_today_holiday()
-        send_msg(f"Dzisiaj jest: {holiday.upper()}")
+        holiday, link = get_today_holiday()
+        send_msg(f"Dzisiaj jest: <a href=\"{link}\">{holiday.upper()}</a>")
     except:
         return
 
