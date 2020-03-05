@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 
 from holidays import get_today_holiday
-from lessons import get_lesson_start, get_lesson_end
+from lesson import get_lessons_start, get_lessons_end, LESSON_HOURS
 
 # Pobieranie wrażliwych danych z konfiguracji systemu
 TOKEN = os.environ['TOKEN']
