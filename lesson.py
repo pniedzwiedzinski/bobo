@@ -35,8 +35,3 @@ def get_lessons_end():
 
     return end_hour
     
-
-start_hour = get_lessons_start()
-end_hour = get_lessons_end()
-
-print ("Dzisiaj lekcje trwają od " + (LESSON_HOURS[start_hour]["start"]) + " do " + (LESSON_HOURS[end_hour]["end"]))
