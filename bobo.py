@@ -5,6 +5,7 @@ import json
 from datetime import datetime
 
 from holidays import get_today_holiday
+from lessons import get_lesson_start, get_lesson_end
 
 # Pobieranie wrażliwych danych z konfiguracji systemu
 TOKEN = os.environ['TOKEN']
@@ -48,8 +49,10 @@ def main():
     lucky, date = get_lucky()
     send_msg(f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>")
 
-    send_msg(f"<i>Dzisiaj będzie {len(get_lessons())} lekcji</i>")
-
+    start_hour = get_lesson_start()
+    end_hour = get_lesson_end    
+    send_msg("Dzisiaj lekcje trwają od " + (LESSON_HOURS[start_hour]["start"]) + " do " + (LESSON_HOURS[end_hour]["end"])
+    
     try:
         holiday, link = get_today_holiday()
         send_msg(f"Dzisiaj jest: <a href=\"{link}\">{holiday.upper()}</a>")
