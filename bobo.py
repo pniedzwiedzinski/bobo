@@ -51,7 +51,7 @@ def main():
 
     start_hour = get_lesson_start()
     end_hour = get_lesson_end    
-    send_msg("Dzisiaj lekcje trwają od " + (LESSON_HOURS[start_hour]["start"]) + " do " + (LESSON_HOURS[end_hour]["end"])
+    send_msg("Dzisiaj lekcje trwają od " + (LESSON_HOURS[start_hour]["start"]) + " do " + (LESSON_HOURS[end_hour]["end"]))
     
     try:
         holiday, link = get_today_holiday()
