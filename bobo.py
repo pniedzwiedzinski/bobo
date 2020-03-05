@@ -49,8 +49,8 @@ def main():
     lucky, date = get_lucky()
     send_msg(f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>")
 
-    start_hour = get_lesson_start()
-    end_hour = get_lesson_end    
+    start_hour = get_lessons_start()
+    end_hour = get_lessons_end()    
     send_msg("Dzisiaj lekcje trwają od " + (LESSON_HOURS[start_hour]["start"]) + " do " + (LESSON_HOURS[end_hour]["end"]))
     
     try:
