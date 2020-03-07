@@ -27,11 +27,11 @@ def get_lessons_start():
     today_lessons = get_today_lessons()
     start_hour = min([index for index, school_subject in enumerate(today_lessons) if school_subject and len(school_subject) > 0])
 
-    return start_hour 
+    return start_hour
 
 def get_lessons_end():
     today_lessons = get_today_lessons()
     end_hour = max([index for index, school_subject in enumerate(today_lessons) if school_subject and len(school_subject) > 0])
 
     return end_hour
-    
+

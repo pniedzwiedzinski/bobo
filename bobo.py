@@ -4,8 +4,9 @@ import codecs
 import json
 from datetime import datetime
 
-from holidays import get_today_holiday
-from lesson import get_lessons_start, get_lessons_end, LESSON_HOURS
+from modules.holidays import get_today_holiday
+from modules.lesson import get_lessons_start, get_lessons_end, LESSON_HOURS
+from modules.lucky import get_lucky
 
 # Pobieranie wrażliwych danych z konfiguracji systemu
 TOKEN = os.environ['TOKEN']
@@ -17,19 +18,6 @@ def get_name(number):
     if number in data:
         return data[number]
     return number
-
-def get_lessons():
-    r = requests.get("https://kapskypl.github.io/planyn-backend/classes/3E.json")
-    table = r.json()
-    today = table[datetime.today().weekday()]
-    lessons = [ lesson for lesson in today if lesson ]
-    return lessons
-
-# Ta funkcja pobiera szczęśliwy numerek z https://get-lucky.netlify.com/
-def get_lucky():
-    r = requests.get("https://get-lucky.netlify.com/.netlify/functions/get")
-    r = r.json()
-    return r["data"]["luckyNumber"], r["data"]["date"]
 
 def send_msg(msg: str) -> str:
     # Format wiadomości wymagany przez telegrama
@@ -46,13 +34,13 @@ def send_msg(msg: str) -> str:
 
 
 def main():
-    lucky, date = get_lucky()
+    lucky = get_lucky()
     send_msg(f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>")
 
     start_hour = get_lessons_start()
-    end_hour = get_lessons_end()    
+    end_hour = get_lessons_end()
     send_msg("Dzisiaj lekcje trwają od " + (LESSON_HOURS[start_hour]["start"]) + " do " + (LESSON_HOURS[end_hour]["end"]))
-    
+
     try:
         holiday, link = get_today_holiday()
         send_msg(f"Dzisiaj jest: <a href=\"{link}\">{holiday.upper()}</a>")
