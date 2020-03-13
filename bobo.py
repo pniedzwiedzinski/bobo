@@ -34,12 +34,12 @@ def send_msg(msg: str) -> str:
 
 
 def main():
-    lucky = get_lucky()
-    send_msg(f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>")
+    #lucky = get_lucky()
+    #send_msg(f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>")
 
-    start_hour = get_lessons_start()
-    end_hour = get_lessons_end()
-    send_msg("Dzisiaj lekcje trwają od " + (LESSON_HOURS[start_hour]["start"]) + " do " + (LESSON_HOURS[end_hour]["end"]))
+    #start_hour = get_lessons_start()
+    #end_hour = get_lessons_end()
+    #send_msg("Dzisiaj lekcje trwają od " + (LESSON_HOURS[start_hour]["start"]) + " do " + (LESSON_HOURS[end_hour]["end"]))
 
     try:
         holiday, link = get_today_holiday()
