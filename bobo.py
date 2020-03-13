@@ -3,6 +3,7 @@ import requests
 import codecs
 import json
 from datetime import datetime
+from bs4 import BeautifulSoup
 
 from modules.holidays import get_today_holiday
 from modules.lesson import get_lessons_start, get_lessons_end, LESSON_HOURS
@@ -32,6 +33,49 @@ def send_msg(msg: str) -> str:
     # Print który wypisuje odpowiedź od serwera telegrama
     print(r.text)
 
+def coronavirus():
+    countries = {}
+    for row in rows:
+        cols = row.findAll("td")[1:]
+        numbers = []
+        for col in cols:
+            if len(col.contents) > 0:
+                number = str(col.contents[0])
+                if "+" in  number:
+                    number = number.replace("+","")
+                if "," in number:
+                    number = number.replace(",","")
+                try:
+                    numbers.append(float(number))
+                except:
+                    numbers.append(0.0)
+            else:
+                numbers.append(0.0)
+
+        country = row.findAll("td")[0].contents[0]
+        if len(country) == 1:
+            try:
+                country = row.findAll("td")[0].a.contents[0]
+            except:
+                country = "Diamond Princess"
+
+        countries[country.strip()]=numbers
+        
+    message = "BIEŻĄCE INFORMACJE O KORONAWIRUSIE\n\n"
+    message += "POLSKA, zarażeni: " + str(countries["Poland"][0]).replace(".0","") + "\n"
+    message += "POLAND, wyleczeni: " + str(countries["Poland"][4]).replace(".0","") + "\n"
+    message += "POLAND, śmierci: " + str(countries["Poland"][2]).replace(".0","") + "\n\n"
+    total_victims = 0
+    total_recovered = 0
+    total_deaths = 0
+    for country in countries:
+        total_victims += countries[country][0]
+        total_recovered += countries[country][4]
+        total_deaths += countries[country][2]
+    message += "ŚWIAT, zarażeni: " + str(total_victims).replace(".0","") + "\n"
+    message += "ŚWIAT, wyleczeni: " + str(total_recovered).replace(".0","") + "\n"
+    message += "ŚWIAT, śmierci: " + str(total_deaths).replace(".0","") + "\n"
+    return message
 
 def main():
     #lucky = get_lucky()
