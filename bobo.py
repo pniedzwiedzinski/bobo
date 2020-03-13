@@ -7,6 +7,7 @@ from datetime import datetime
 from modules.holidays import get_today_holiday
 from modules.lesson import get_lessons_start, get_lessons_end, LESSON_HOURS
 from modules.lucky import get_lucky
+from modules.coronavirus import coronavirus 
 
 # Pobieranie wrażliwych danych z konfiguracji systemu
 TOKEN = os.environ['TOKEN']
@@ -46,5 +47,6 @@ def main():
         send_msg(f"Dzisiaj jest: <a href=\"{link}\">{holiday.upper()}</a>")
     except:
         return
+    send_msg(coronavirus())
 
 main()
