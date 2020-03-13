@@ -40,8 +40,8 @@ def coronavirus():
 
     message = "BIEŻĄCE INFORMACJE O KORONAWIRUSIE\n\n"
     message += "POLSKA, zarażeni: " + str(countries["Poland"][0]).replace(".0","") + "\n"
-    message += "POLAND, wyleczeni: " + str(countries["Poland"][4]).replace(".0","") + "\n"
-    message += "POLAND, śmierci: " + str(countries["Poland"][2]).replace(".0","") + "\n\n"
+    message += "POLSKA, wyleczeni: " + str(countries["Poland"][4]).replace(".0","") + "\n"
+    message += "POLSKA, śmierci: " + str(countries["Poland"][2]).replace(".0","") + "\n\n"
     total_victims = 0
     total_recovered = 0
     total_deaths = 0
