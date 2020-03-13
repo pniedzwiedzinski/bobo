@@ -1,8 +1,9 @@
 name: Daily send
 
 on:
+  push:
   schedule:
-    - cron:  '30 5 * * Mon-Fri'
+    - cron:  '0 8,14,20 * * Mon-Fri'
 
 jobs:
   send:
