@@ -1,4 +1,5 @@
 import os
+import sys
 import requests
 import codecs
 import json
@@ -34,9 +35,9 @@ def send_msg(msg: str) -> str:
     print(r.text)
 
 
-def main():
-    #lucky = get_lucky()
-    #send_msg(f"<b>Szczesliwy numerek: {get_name(str(lucky))} ({lucky})</b>")
+def daily():
+    lucky = get_lucky()
+    send_msg(f"<b>Dzisiaj szczęśliwy numerek ma {get_name(str(lucky))} ({lucky})</b>")
 
     #start_hour = get_lessons_start()
     #end_hour = get_lessons_end()
@@ -47,6 +48,9 @@ def main():
         send_msg(f"Dzisiaj jest: <a href=\"{link}\">{holiday.upper()}</a>")
     except:
         return
-    send_msg(coronavirus())
 
-main()
+
+    if sys.argv[1] == "corona":
+        send_msg(coronavirus())
+    else:
+        daily()
