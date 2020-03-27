@@ -50,7 +50,7 @@ def daily():
         return
 
 
-    if sys.argv[1] == "corona":
-        send_msg(coronavirus())
-    else:
-        daily()
+if sys.argv[1] == "corona":
+    send_msg(coronavirus())
+else:
+    daily()
