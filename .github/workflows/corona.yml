@@ -1,9 +1,8 @@
 name: Corona
 
 on:
-  push:
   schedule:
-    - cron:  '0 8,14,20 * * *'
+    - cron:  '0 7,13,19 * * *'
 
 jobs:
   send:
