@@ -42,14 +42,7 @@ def coronavirus():
     message += "POLSKA, zarażeni: " + str(countries["Poland"][0]).replace(".0","") + "\n"
     message += "POLSKA, wyleczeni: " + str(countries["Poland"][4]).replace(".0","") + "\n"
     message += "POLSKA, śmierci: " + str(countries["Poland"][2]).replace(".0","") + "\n\n"
-    total_victims = 0
-    total_recovered = 0
-    total_deaths = 0
-    for country in countries:
-        total_victims += countries[country][0]
-        total_recovered += countries[country][4]
-        total_deaths += countries[country][2]
-    message += "ŚWIAT, zarażeni: " + str(total_victims).replace(".0","") + "\n"
-    message += "ŚWIAT, wyleczeni: " + str(total_recovered).replace(".0","") + "\n"
-    message += "ŚWIAT, śmierci: " + str(total_deaths).replace(".0","") + "\n"
+    message += "ŚWIAT, zarażeni: " + str(countries["World"][0]).replace(".0","") + "\n"
+    message += "ŚWIAT, wyleczeni: " + str(countries["World"][4]).replace(".0","") + "\n"
+    message += "ŚWIAT, śmierci: " + str(countries["World"][2]).replace(".0","") + "\n\n"
     return message
