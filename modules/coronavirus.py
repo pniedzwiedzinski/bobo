@@ -29,8 +29,7 @@ def coronavirus():
             else:
                 numbers.append(0.0)
 
-        country = row.findAll("td")
-        country = country[1].contents[0]
+        country = row.findAll("td")[1].contents[0]
         if len(country) == 1:
             try:
                 country = country.contents[0]
