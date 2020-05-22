@@ -1,7 +1,6 @@
 name: Daily send
 
 on:
-  push:
   schedule:
     - cron:  '0 8 * * *'
 
