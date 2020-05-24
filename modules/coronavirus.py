@@ -41,9 +41,9 @@ def coronavirus():
         countries[country.strip()]=numbers
 
     message = "BIEŻĄCE INFORMACJE O KORONAWIRUSIE\n\n"
-    message += "POLAND, zarażeni: " + str(countries["Poland"][1]).replace(".0","") + "\n"
-    message += "POLAND, wyleczeni: " + str(countries["Poland"][5]).replace(".0","") + "\n"
-    message += "POLAND, śmierci: " + str(countries["Poland"][3]).replace(".0","") + "\n\n"
+    message += "POLSKA, zarażeni: " + str(countries["Poland"][1]).replace(".0","") + "\n"
+    message += "POLSKA, wyleczeni: " + str(countries["Poland"][5]).replace(".0","") + "\n"
+    message += "POLSKA, śmierci: " + str(countries["Poland"][3]).replace(".0","") + "\n\n"
     message += "ŚWIAT, zarażeni: " + str(countries["World"][1]).replace(".0","") + "\n"
     message += "ŚWIAT, wyleczeni: " + str(countries["World"][5]).replace(".0","") + "\n"
     message += "ŚWIAT, śmierci: " + str(countries["World"][3]).replace(".0","") + "\n\n"
