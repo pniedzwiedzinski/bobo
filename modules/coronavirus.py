@@ -34,6 +34,7 @@ def coronavirus():
         except:
             try:
                 country =  row.findAll("td")[1].span.contents[0]
+
             except:
                 country = row.findAll("td")[1].contents[0]
 
