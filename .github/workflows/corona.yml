@@ -2,7 +2,7 @@ name: Corona
 
 on:
   schedule:
-    - cron:  '0 7,13,19 * * *'
+    - cron:  '0 9 * * *'
 
 jobs:
   send:
