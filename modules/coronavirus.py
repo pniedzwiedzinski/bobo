@@ -42,10 +42,10 @@ def coronavirus():
         countries[country.strip()]=numbers
 
     message = "BIEŻĄCE INFORMACJE O KORONAWIRUSIE\n\n"
-    message += "POLSKA, zarażeni: " + str(countries["Poland"][1]).replace(".0","") + "\n"
-    message += "POLSKA, wyleczeni: " + str(countries["Poland"][5]).replace(".0","") + "\n"
-    message += "POLSKA, śmierci: " + str(countries["Poland"][3]).replace(".0","") + "\n\n"
-    message += "ŚWIAT, zarażeni: " + str(countries["World"][1]).replace(".0","") + "\n"
-    message += "ŚWIAT, wyleczeni: " + str(countries["World"][5]).replace(".0","") + "\n"
-    message += "ŚWIAT, śmierci: " + str(countries["World"][3]).replace(".0","") + "\n\n"
+    message += "POLSKA, zarażeni: " + str(countries["Poland"][1]).replace(".0","") + " (+" + str(countries["Poland"][2]).replace(".0","") + ")\n"
+    message += "POLSKA, aktywne: " + str(countries["Poland"][7]).replace(".0","") + "\n"
+    message += "POLSKA, śmierci: " + str(countries["Poland"][3]).replace(".0","") + " (+" + str(countries["Poland"][4]).replace(".0","") + ")\n\n"
+    message += "ŚWIAT, zarażeni: " + str(countries["World"][1]).replace(".0","") + " (+" + str(countries["World"][2]).replace(".0","") + ")\n"
+    message += "ŚWIAT, aktywne: " + str(countries["World"][7]).replace(".0","") + "\n"
+    message += "ŚWIAT, śmierci: " + str(countries["World"][3]).replace(".0","") + " (+" + str(countries["World"][4]).replace(".0","") + ")\n\n"
     return message
