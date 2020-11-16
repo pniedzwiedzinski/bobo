@@ -8,7 +8,7 @@ from datetime import datetime
 from modules.holidays import get_today_holiday
 from modules.lesson import get_lessons_start, get_lessons_end, LESSON_HOURS
 from modules.lucky import get_lucky
-from modules.coronavirus import coronavirus 
+from modules.coronavirus import coronavirus
 
 # Pobieranie wrażliwych danych z konfiguracji systemu
 TOKEN = os.environ['TOKEN']
@@ -50,7 +50,8 @@ def daily():
         return
 
 
-if len(sys.argv) > 1 and sys.argv[1] == "corona":
-    send_msg(coronavirus())
-else:
-    daily()
+if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1] == "corona":
+        send_msg(coronavirus())
+    else:
+        daily()
