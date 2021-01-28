@@ -56,4 +56,4 @@ if __name__ == '__main__':
         send_msg(coronavirus())
     else:
         daily()
-        do_matury()
+        send_msg(do_matury())
