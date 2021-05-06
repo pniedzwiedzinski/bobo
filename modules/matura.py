@@ -10,4 +10,4 @@ def days_to(d1):
     return abs((d2 - d1).days)
 
 def do_matury():
-    return f"Do matury zostało {days_to('2021-05-05')} dni 🎉"
+    return f"Do matury z informatyki zostało {days_to('2021-05-19')} dni 🎉"
